@@ -3,9 +3,8 @@
 
 all: clean test build
 
-build:
-	go build -o bin/sleep cmd/sleep/main.go
-	chmod +x bin/sleep
+install:
+	go install cmd/sleep/sleep.go
 
 run:
 	go run *.go -tags buildChecks

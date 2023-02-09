@@ -39,15 +39,15 @@ func file() {
 	symlink := filepath.Join(originalWorkingDir, "examplesLink")
 	err = os.Symlink(examplesDir, symlink)
 	if err != nil {
-		fmt.Println("creating symlink: ", err)
+		fmt.Println("error creating symlink: ", err)
 	}
 	fmt.Printf("created symlink, %s, to %s\n", symlink, examplesDir)
 	err = printFiles(symlink)
 	if err != nil {
 		fmt.Printf("Error printing files in %s\n", workingDir)
 	}
-	file := filepath.Join(examplesDir, "file0")
-	linkedFile := filepath.Join(symlink, "file0")
+	file := filepath.Join(examplesDir, "file1")
+	linkedFile := filepath.Join(symlink, "file1")
 	err = sameFileCheck(file, linkedFile)
 	if err != nil {
 		fmt.Println("unable to do same file check: ", err)
@@ -65,24 +65,24 @@ func file() {
 }
 
 func createFiles() error {
-	filename0 := "file0"
 	filename1 := "file1"
 	filename2 := "file2"
-	f1, err := os.Create(filename0)
-	if err != nil {
-		return fmt.Errorf("error creating %s: %v\n", filename0, err)
-	}
-	defer f1.Close()
-	f1.WriteString("abc")
-	f2, err := os.Create(filename1)
+	filename3 := "file3"
+	f1, err := os.Create(filename1)
 	if err != nil {
 		return fmt.Errorf("error creating %s: %v\n", filename1, err)
 	}
+	defer f1.Close()
+	f1.WriteString("abc")
+	f2, err := os.Create(filename2)
+	if err != nil {
+		return fmt.Errorf("error creating %s: %v\n", filename2, err)
+	}
 	defer f2.Close()
 	f2.WriteString("123")
-	f3, err := os.Create(filename2)
+	f3, err := os.Create(filename3)
 	if err != nil {
-		return fmt.Errorf("error creating %s: %v", filename2, err)
+		return fmt.Errorf("error creating %s: %v", filename3, err)
 	}
 	defer f3.Close()
 	f3.WriteString("xyz")

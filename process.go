@@ -12,7 +12,7 @@ func process() {
 	fmt.Println("Caller user id:", os.Geteuid())
 	fmt.Println("Process id of caller", os.Getpid())
 
-	cmd := exec.Command(filepath.Join("bin", "sleep"))
+	cmd := exec.Command(filepath.Join(os.Getenv("GOPATH"), "bin", "sleep"))
 	fmt.Println("running sleep for 1 second...")
 	if err := cmd.Start(); err != nil {
 		panic(err)

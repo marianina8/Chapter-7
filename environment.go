@@ -9,14 +9,14 @@ import (
 func environment() {
 	dir, err := os.Getwd()
 	if err != nil {
-		fmt.Println("getting working directory:", err)
+		fmt.Println("error getting working directory:", err)
 	}
 	fmt.Println("retrieved working directory: ", dir)
 
 	fmt.Println("setting WORKING_DIR to", dir)
 	err = os.Setenv("WORKING_DIR", dir)
 	if err != nil {
-		fmt.Println("setting working directory:", err)
+		fmt.Println("error setting working directory:", err)
 	}
 	fmt.Println(os.ExpandEnv("WORKING_DIR=${WORKING_DIR}"))
 
@@ -34,7 +34,7 @@ func environment() {
 	fmt.Println("unsetting WORKING_DIR")
 	err = os.Unsetenv("WORKING_DIR")
 	if err != nil {
-		fmt.Println("unsetting working directory:", err)
+		fmt.Println("error unsetting working directory:", err)
 	}
 	fmt.Println(os.ExpandEnv("WORKING_DIR=${WORKING_DIR}"))
 }
